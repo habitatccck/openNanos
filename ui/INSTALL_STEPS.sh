@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Markdown 依赖安装指南
+# 由于 npm 权限问题，请在终端手动执行以下命令
+
+echo "================================"
+echo "Markdown 依赖安装步骤"
+echo "================================"
+echo ""
+echo "步骤 1: 修复 npm 权限"
+echo "请在终端执行："
+echo ""
+echo "sudo chown -R \$(id -u):\$(id -g) \"\$HOME/.npm\""
+echo ""
+echo "================================"
+echo ""
+echo "步骤 2: 进入项目目录"
+echo "cd /Users/mac/Desktop/openNanos/opennanos-platform/ui"
+echo ""
+echo "================================"
+echo ""
+echo "步骤 3: 安装依赖"
+echo "npm install react-markdown remark-gfm rehype-raw rehype-sanitize react-syntax-highlighter github-markdown-css"
+echo ""
+echo "npm install --save-dev @types/react-syntax-highlighter"
+echo ""
+echo "================================"
+echo ""
+echo "步骤 4: 启动开发服务器"
+echo "npm run dev"
+echo ""
+echo "================================"
