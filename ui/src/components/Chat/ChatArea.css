@@ -1,0 +1,16 @@
+:root[data-theme='light'] {
+  --chat-area-bg: rgba(255, 255, 255, 0.5);
+}
+
+:root[data-theme='dark'] {
+  --chat-area-bg: rgba(15, 23, 42, 0.5);
+}
+
+.chat-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 2rem;
+  background: var(--chat-area-bg);
+  transition: background 0.3s ease;
+}

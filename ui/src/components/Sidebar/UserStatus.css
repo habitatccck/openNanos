@@ -1,0 +1,55 @@
+:root[data-theme='light'] {
+  --avatar-border: white;
+  --status-indicator-border: white;
+  --status-text: rgb(107, 114, 128);
+}
+
+:root[data-theme='dark'] {
+  --avatar-border: rgba(15, 23, 42, 0.9);
+  --status-indicator-border: rgba(15, 23, 42, 0.9);
+  --status-text: rgb(148, 163, 184);
+}
+
+.user-status {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0 0.25rem;
+  margin-bottom: 2rem;
+}
+
+.user-avatar {
+  position: relative;
+  width: 2.25rem;
+  height: 2.25rem;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--avatar-border);
+  transition: border-color 0.3s ease;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.status-indicator {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: #10b981;
+  border: 2px solid var(--status-indicator-border);
+  border-radius: 50%;
+  transition: border-color 0.3s ease;
+}
+
+.status-text {
+  font-size: 0.813rem;
+  font-weight: 500;
+  color: var(--status-text);
+  transition: color 0.3s ease;
+}

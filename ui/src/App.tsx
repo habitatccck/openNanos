@@ -1,7 +1,12 @@
-import { ChatInterface } from './components/ChatInterface'
+import { ThemeProvider } from './context/ThemeContext';
+import { Home } from './views/Home';
 
 function App() {
-  return <ChatInterface />
+  return (
+    <ThemeProvider>
+      <Home />
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;

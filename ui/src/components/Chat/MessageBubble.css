@@ -1,0 +1,74 @@
+@import './ChatAnimations.css';
+
+:root[data-theme='light'] {
+  --bubble-assistant-bg: white;
+  --bubble-assistant-text: rgb(31, 41, 55);
+  --bubble-assistant-border: rgba(0, 0, 0, 0.06);
+  --bubble-user-bg-start: #0ea5e9;
+  --bubble-user-bg-end: #06b6d4;
+  --bubble-user-shadow: rgba(14, 165, 233, 0.35);
+}
+
+:root[data-theme='dark'] {
+  --bubble-assistant-bg: rgba(30, 41, 59, 0.8);
+  --bubble-assistant-text: rgb(226, 232, 240);
+  --bubble-assistant-border: rgba(255, 255, 255, 0.1);
+  --bubble-user-bg-start: #3b82f6;
+  --bubble-user-bg-end: #2563eb;
+  --bubble-user-shadow: rgba(59, 130, 246, 0.5);
+}
+
+.message-bubble-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 75%;
+}
+
+.message-bubble-wrapper.user {
+  align-items: flex-end;
+  align-self: flex-end;
+}
+
+.message-bubble-wrapper.assistant {
+  align-items: flex-start;
+  align-self: flex-start;
+}
+
+.message-bubble {
+  border-radius: 1.125rem;
+  padding: 0.875rem 1.125rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.message-bubble-wrapper.assistant .message-bubble {
+  background: var(--bubble-assistant-bg);
+  color: var(--bubble-assistant-text);
+  border: 1px solid var(--bubble-assistant-border);
+}
+
+.message-bubble-wrapper.user .message-bubble {
+  background: linear-gradient(135deg, var(--bubble-user-bg-start) 0%, var(--bubble-user-bg-end) 100%);
+  color: white;
+  box-shadow: 0 4px 12px var(--bubble-user-shadow);
+}
+
+.message-text {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+/* Override markdown styles for assistant messages */
+.message-bubble-wrapper.assistant .markdown-renderer {
+  background: transparent;
+}
+
+.message-bubble-wrapper.assistant .markdown-body {
+  background: transparent;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--bubble-assistant-text);
+}

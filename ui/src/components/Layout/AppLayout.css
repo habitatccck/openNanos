@@ -1,0 +1,64 @@
+:root[data-theme='light'] {
+  --bg-gradient-start: #0ea5e9;
+  --bg-gradient-mid: #06b6d4;
+  --bg-gradient-end: #14b8a6;
+  --app-bg: rgba(255, 255, 255, 0.95);
+  --text-primary: rgb(31, 41, 55);
+  --text-secondary: rgb(107, 114, 128);
+}
+
+:root[data-theme='dark'] {
+  --bg-gradient-start: #0f172a;
+  --bg-gradient-mid: #1e293b;
+  --bg-gradient-end: #334155;
+  --app-bg: rgba(15, 23, 42, 0.95);
+  --text-primary: rgb(241, 245, 249);
+  --text-secondary: rgb(148, 163, 184);
+}
+
+.app-layout-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid) 50%, var(--bg-gradient-end) 100%);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background 0.3s ease;
+}
+
+.app-layout {
+  position: relative;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  border-radius: 0;
+  border: none;
+  background: var(--app-bg);
+  backdrop-filter: blur(40px);
+  box-shadow: none;
+  transition: background 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 1280px) {
+  .app-layout {
+    width: 100vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-layout-container {
+    padding: 0;
+  }
+
+  .app-layout {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+  }
+}

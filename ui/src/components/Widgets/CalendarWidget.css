@@ -1,0 +1,80 @@
+:root[data-theme='light'] {
+  --calendar-bg: white;
+  --calendar-border: rgba(0, 0, 0, 0.06);
+  --calendar-title: rgb(107, 114, 128);
+  --calendar-weekday: rgb(156, 163, 175);
+  --calendar-day: rgb(75, 85, 99);
+  --calendar-hover-bg: rgba(14, 165, 233, 0.08);
+  --calendar-hover-text: #0ea5e9;
+  --calendar-active-bg-start: #0ea5e9;
+  --calendar-active-bg-end: #06b6d4;
+  --calendar-active-shadow: rgba(14, 165, 233, 0.4);
+}
+
+:root[data-theme='dark'] {
+  --calendar-bg: rgba(30, 41, 59, 0.9);
+  --calendar-border: rgba(255, 255, 255, 0.1);
+  --calendar-title: rgb(148, 163, 184);
+  --calendar-weekday: rgb(100, 116, 139);
+  --calendar-day: rgb(203, 213, 225);
+  --calendar-hover-bg: rgba(59, 130, 246, 0.15);
+  --calendar-hover-text: #3b82f6;
+  --calendar-active-bg-start: #3b82f6;
+  --calendar-active-bg-end: #2563eb;
+  --calendar-active-shadow: rgba(59, 130, 246, 0.5);
+}
+
+.calendar-widget {
+  border-radius: 1.25rem;
+  background: var(--calendar-bg);
+  padding: 1.125rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--calendar-border);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.calendar-title {
+  margin-bottom: 0.75rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+  color: var(--calendar-title);
+  transition: color 0.3s ease;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.25rem;
+  text-align: center;
+  font-size: 0.625rem;
+}
+
+.calendar-weekday {
+  padding: 0.25rem;
+  color: var(--calendar-weekday);
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.calendar-day {
+  padding: 0.375rem;
+  color: var(--calendar-day);
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.calendar-day:hover {
+  background: var(--calendar-hover-bg);
+  color: var(--calendar-hover-text);
+}
+
+.calendar-day.active {
+  background: linear-gradient(135deg, var(--calendar-active-bg-start) 0%, var(--calendar-active-bg-end) 100%);
+  color: white;
+  font-weight: 700;
+  box-shadow: 0 2px 6px var(--calendar-active-shadow);
+}

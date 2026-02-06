@@ -1,0 +1,92 @@
+:root[data-theme='light'] {
+  --shortcut-primary-bg-start: rgba(14, 165, 233, 0.1);
+  --shortcut-primary-bg-end: rgba(6, 182, 212, 0.1);
+  --shortcut-primary-text: #0369a1;
+  --shortcut-primary-border: rgba(14, 165, 233, 0.2);
+  --shortcut-primary-hover-start: rgba(14, 165, 233, 0.15);
+  --shortcut-primary-hover-end: rgba(6, 182, 212, 0.15);
+  --shortcut-primary-icon: #0ea5e9;
+  --shortcut-secondary-bg: white;
+  --shortcut-secondary-text: rgb(75, 85, 99);
+  --shortcut-secondary-border: rgba(0, 0, 0, 0.06);
+  --shortcut-secondary-hover: rgba(249, 250, 251, 1);
+  --shortcut-secondary-icon: rgb(156, 163, 175);
+}
+
+:root[data-theme='dark'] {
+  --shortcut-primary-bg-start: rgba(59, 130, 246, 0.15);
+  --shortcut-primary-bg-end: rgba(37, 99, 235, 0.15);
+  --shortcut-primary-text: #60a5fa;
+  --shortcut-primary-border: rgba(59, 130, 246, 0.3);
+  --shortcut-primary-hover-start: rgba(59, 130, 246, 0.2);
+  --shortcut-primary-hover-end: rgba(37, 99, 235, 0.2);
+  --shortcut-primary-icon: #3b82f6;
+  --shortcut-secondary-bg: rgba(30, 41, 59, 0.9);
+  --shortcut-secondary-text: rgb(203, 213, 225);
+  --shortcut-secondary-border: rgba(255, 255, 255, 0.1);
+  --shortcut-secondary-hover: rgba(51, 65, 85, 1);
+  --shortcut-secondary-icon: rgb(148, 163, 184);
+}
+
+.shortcuts-widget {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.shortcut-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.875rem;
+  border: none;
+  border-radius: 0.875rem;
+  font-size: 0.813rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.shortcut-button.primary {
+  background: linear-gradient(135deg, var(--shortcut-primary-bg-start) 0%, var(--shortcut-primary-bg-end) 100%);
+  color: var(--shortcut-primary-text);
+  border: 1px solid var(--shortcut-primary-border);
+}
+
+.shortcut-button.primary:hover {
+  background: linear-gradient(135deg, var(--shortcut-primary-hover-start) 0%, var(--shortcut-primary-hover-end) 100%);
+  transform: translateX(2px);
+}
+
+.shortcut-button.primary .shortcut-icon {
+  color: var(--shortcut-primary-icon);
+}
+
+.shortcut-button.secondary {
+  background: var(--shortcut-secondary-bg);
+  color: var(--shortcut-secondary-text);
+  border: 1px solid var(--shortcut-secondary-border);
+}
+
+.shortcut-button.secondary:hover {
+  background: var(--shortcut-secondary-hover);
+  transform: translateX(2px);
+}
+
+.shortcut-button.secondary .shortcut-icon {
+  color: var(--shortcut-secondary-icon);
+}
+
+.shortcut-label {
+  font-weight: 500;
+}
+
+.shortcut-icon {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.shortcut-button:hover .shortcut-icon {
+  transform: translateX(0.25rem);
+}
