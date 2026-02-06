@@ -1,0 +1,350 @@
+/* Markdown 渲染器容器 */
+.markdown-renderer {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* GitHub Markdown 样式覆盖 */
+.markdown-body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  word-wrap: break-word;
+  padding: 0;
+  background: transparent !important;
+  color: inherit;
+}
+
+/* 浅色主题 */
+.markdown-renderer.light .markdown-body {
+  color: #1d1d1f;
+}
+
+.markdown-renderer.light .markdown-body code {
+  background: rgba(0, 0, 0, 0.06);
+  color: #d73a49;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.markdown-renderer.light .markdown-body pre {
+  background: #f6f8fa;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  padding: 12px;
+  overflow-x: auto;
+}
+
+.markdown-renderer.light .markdown-body blockquote {
+  border-left: 4px solid #007aff;
+  padding: 8px 16px;
+  margin: 12px 0;
+  background: rgba(0, 122, 255, 0.05);
+  border-radius: 0 8px 8px 0;
+  color: #1d1d1f;
+}
+
+.markdown-renderer.light .markdown-body table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 12px 0;
+}
+
+.markdown-renderer.light .markdown-body table th,
+.markdown-renderer.light .markdown-body table td {
+  border: 1px solid #d1d1d6;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.markdown-renderer.light .markdown-body table th {
+  background: #f6f8fa;
+  font-weight: 600;
+}
+
+.markdown-renderer.light .markdown-body table tr:nth-child(even) {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* 深色主题 */
+.markdown-renderer.dark .markdown-body {
+  color: #f5f5f7;
+}
+
+.markdown-renderer.dark .markdown-body code {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ff7b72;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.markdown-renderer.dark .markdown-body pre {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 12px;
+  overflow-x: auto;
+}
+
+.markdown-renderer.dark .markdown-body blockquote {
+  border-left: 4px solid #0a84ff;
+  padding: 8px 16px;
+  margin: 12px 0;
+  background: rgba(10, 132, 255, 0.1);
+  border-radius: 0 8px 8px 0;
+  color: #f5f5f7;
+}
+
+.markdown-renderer.dark .markdown-body table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 12px 0;
+}
+
+.markdown-renderer.dark .markdown-body table th,
+.markdown-renderer.dark .markdown-body table td {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.markdown-renderer.dark .markdown-body table th {
+  background: rgba(255, 255, 255, 0.05);
+  font-weight: 600;
+}
+
+.markdown-renderer.dark .markdown-body table tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* 标题样式 */
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 20px;
+  margin-bottom: 12px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.4px;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  border-bottom: 1px solid #d1d1d6;
+  padding-bottom: 8px;
+}
+
+.markdown-body h2 {
+  font-size: 1.5em;
+  border-bottom: 1px solid #e1e1e6;
+  padding-bottom: 6px;
+}
+
+.markdown-body h3 {
+  font-size: 1.25em;
+}
+
+.markdown-body h4 {
+  font-size: 1.1em;
+}
+
+.markdown-body h5,
+.markdown-body h6 {
+  font-size: 1em;
+}
+
+/* 段落和列表 */
+.markdown-body p {
+  margin: 8px 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 1.5em;
+  margin: 8px 0;
+}
+
+.markdown-body li {
+  margin: 4px 0;
+}
+
+.markdown-body li > p {
+  margin: 0;
+}
+
+/* 链接样式 */
+.markdown-body a {
+  color: #007aff;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.markdown-body a:hover {
+  opacity: 0.7;
+  text-decoration: underline;
+}
+
+.markdown-renderer.dark .markdown-body a {
+  color: #0a84ff;
+}
+
+/* 水平线 */
+.markdown-body hr {
+  border: none;
+  border-top: 1px solid #d1d1d6;
+  margin: 20px 0;
+}
+
+.markdown-renderer.dark .markdown-body hr {
+  border-top-color: rgba(255, 255, 255, 0.15);
+}
+
+/* 图片样式 */
+.markdown-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 12px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.markdown-renderer.dark .markdown-image {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* 表格容器 */
+.table-wrapper {
+  overflow-x: auto;
+  margin: 12px 0;
+  border-radius: 8px;
+  border: 1px solid #d1d1d6;
+}
+
+.markdown-renderer.dark .table-wrapper {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* 代码块样式增强 */
+.code-block {
+  border-radius: 8px !important;
+  margin: 12px 0 !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.markdown-renderer.dark .code-block {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* 任务列表样式 */
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item input[type="checkbox"] {
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+/* 自定义引用块增强 */
+.custom-blockquote {
+  position: relative;
+  font-style: italic;
+  margin: 16px 0;
+}
+
+.custom-blockquote::before {
+  content: '"';
+  font-size: 2em;
+  position: absolute;
+  left: -8px;
+  top: -8px;
+  opacity: 0.3;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .markdown-body {
+    font-size: 14px;
+  }
+
+  .markdown-body h1 {
+    font-size: 1.75em;
+  }
+
+  .markdown-body h2 {
+    font-size: 1.4em;
+  }
+
+  .markdown-body h3 {
+    font-size: 1.2em;
+  }
+
+  .code-block {
+    font-size: 12px !important;
+  }
+}
+
+/* 动画效果 */
+.markdown-renderer {
+  animation: fadeInMarkdown 0.3s ease-out;
+}
+
+@keyframes fadeInMarkdown {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 选择文本样式 */
+.markdown-body ::selection {
+  background: rgba(0, 122, 255, 0.2);
+}
+
+.markdown-renderer.dark .markdown-body ::selection {
+  background: rgba(10, 132, 255, 0.3);
+}
+
+/* 滚动条样式 */
+.markdown-body pre::-webkit-scrollbar,
+.table-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.markdown-body pre::-webkit-scrollbar-track,
+.table-wrapper::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.markdown-body pre::-webkit-scrollbar-thumb,
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.markdown-body pre::-webkit-scrollbar-thumb:hover,
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.markdown-renderer.dark .markdown-body pre::-webkit-scrollbar-thumb,
+.markdown-renderer.dark .table-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.markdown-renderer.dark .markdown-body pre::-webkit-scrollbar-thumb:hover,
+.markdown-renderer.dark .table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}

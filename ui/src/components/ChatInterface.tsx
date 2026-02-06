@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { nativeBridge } from '../services/nativeBridge';
 import type { Message } from '../types/rpc';
+import { MarkdownRenderer } from './MarkdownRenderer';
 import './Chat.css';
 
 export function ChatInterface() {
@@ -137,7 +138,13 @@ export function ChatInterface() {
             className={`message-wrapper ${message.role === 'user' ? 'user-message' : 'assistant-message'}`}
           >
             <div className="message-bubble">
-              <div className="message-content">{message.content}</div>
+              <div className="message-content">
+                {message.role === 'assistant' ? (
+                  <MarkdownRenderer content={message.content} theme="light" />
+                ) : (
+                  message.content
+                )}
+              </div>
               <div className="message-time">
                 {new Date(message.timestamp).toLocaleTimeString('zh-CN', {
                   hour: '2-digit',
@@ -151,8 +158,10 @@ export function ChatInterface() {
         {/* 显示正在流式输出的内容 */}
         {streamingContent && (
           <div className="message-wrapper assistant-message">
-            <div className="message-bubble">
-              <div className="message-content">{streamingContent}</div>
+            <div className="message-bubble streaming">
+              <div className="message-content">
+                <MarkdownRenderer content={streamingContent} theme="light" />
+              </div>
               <div className="message-time">正在输入...</div>
             </div>
           </div>
