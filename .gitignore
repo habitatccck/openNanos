@@ -1,0 +1,12 @@
+node_modules/
+build/
+dist/
+*.log
+.DS_Store
+*.swp
+*.swo
+*~
+.env
+.env.local
+DerivedData/
+xcuserdata/

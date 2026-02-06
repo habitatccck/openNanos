@@ -1,0 +1,15 @@
+{
+  "name": "opennanos-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "openNanos Platform - Cross-platform containers and UI for OpenClaw",
+  "scripts": {
+    "dev": "pnpm --filter ui dev",
+    "build:ui": "pnpm --filter ui build",
+    "build:macos": "bash scripts/build-macos.sh",
+    "install:all": "pnpm install"
+  },
+  "keywords": ["opennanos", "openclaw", "macos", "windows", "ui"],
+  "author": "",
+  "license": "MIT"
+}
