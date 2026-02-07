@@ -136,6 +136,16 @@ class NativeBridge {
   async getStatus(): Promise<any> {
     return this.invoke('getStatus');
   }
+
+  // 获取会话历史
+  async getSessionHistory(sessionId: string = 'agent:main:main'): Promise<any[]> {
+    return this.invoke('getSessionHistory', { sessionId });
+  }
+
+  // 获取所有会话列表
+  async getSessions(): Promise<any[]> {
+    return this.invoke('getSessions');
+  }
 }
 
 export const nativeBridge = new NativeBridge();
