@@ -4,6 +4,7 @@ import { Sidebar } from '../components/Sidebar/Sidebar';
 import { WidgetSidebar } from '../components/Widgets/WidgetSidebar';
 import { MessageList } from '../components/Chat/MessageList';
 import { ChatInput } from '../components/Chat/ChatInput';
+import { MarkdownRenderer } from '../components/MarkdownRenderer';
 import { nativeBridge } from '../services/nativeBridge';
 import type { Message } from '../components/Chat/MessageBubble';
 import '../components/Chat/ChatArea.css';
@@ -18,10 +19,13 @@ export const Home: React.FC = () => {
   const [streamingContent, setStreamingContent] = useState('');
   const [isHistoryLoaded, setIsHistoryLoaded] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const streamingMessageIdRef = useRef<string>('');
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTop = scrollContainerRef.current.scrollHeight;
+    }
   };
 
   useEffect(() => {
@@ -135,7 +139,7 @@ export const Home: React.FC = () => {
   }, []);
 
   const handleSendMessage = async (content: string) => {
-    if (!content.trim() || isLoading) return;
+    if (!content.trim()) return;
 
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -178,37 +182,51 @@ export const Home: React.FC = () => {
           </div>
         ) : (
           <>
-            <MessageList messages={messages} />
-
-            {/* 显示正在流式输出的内容 */}
-            {streamingContent && (
-              <div className="message-bubble-wrapper assistant streaming">
-                <div className="message-bubble">
-                  <div className="message-content">{streamingContent}</div>
-                </div>
-              </div>
-            )}
-
-            {/* 加载指示器 */}
-            {isLoading && !streamingContent && (
-              <div className="message-bubble-wrapper assistant">
-                <div className="message-bubble loading">
-                  <div className="typing-indicator">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+            <div className="messages-scroll-container" ref={scrollContainerRef}>
+              <div className="messages-content">
+                {messages.map((message) => (
+                  <div key={message.id} className={`message-bubble-wrapper ${message.role}`}>
+                    <div className="message-bubble">
+                      {message.role === 'assistant' ? (
+                        <MarkdownRenderer content={message.content} theme="light" />
+                      ) : (
+                        <div className="message-text">{message.content}</div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </div>
-            )}
+                ))}
 
-            <div ref={messagesEndRef} />
+                {/* 显示正在流式输出的内容 */}
+                {streamingContent && (
+                  <div className="message-bubble-wrapper assistant streaming">
+                    <div className="message-bubble">
+                      <MarkdownRenderer content={streamingContent} theme="light" />
+                    </div>
+                  </div>
+                )}
+
+                {/* 加载指示器 */}
+                {isLoading && !streamingContent && (
+                  <div className="message-bubble-wrapper assistant">
+                    <div className="message-bubble loading">
+                      <div className="typing-indicator">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                <div ref={messagesEndRef} />
+              </div>
+            </div>
 
             <ChatInput
               value={inputValue}
               onChange={setInputValue}
               onSend={() => handleSendMessage(inputValue)}
-              disabled={isLoading}
+              disabled={false}
             />
           </>
         )}

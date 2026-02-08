@@ -13,4 +13,48 @@
   padding: 1.5rem 2rem;
   background: var(--chat-area-bg);
   transition: background 0.3s ease;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.messages-scroll-container {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 1rem;
+  scroll-behavior: smooth;
+}
+
+.messages-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-right: 0.5rem;
+  min-height: min-content;
+}
+
+/* Custom scrollbar */
+.messages-scroll-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.messages-scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.messages-scroll-container::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+
+.messages-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+:root[data-theme='dark'] .messages-scroll-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+:root[data-theme='dark'] .messages-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
 }
